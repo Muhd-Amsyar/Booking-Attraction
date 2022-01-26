@@ -13,7 +13,7 @@ crossorigin="anonymous">
 <div class="container col-md-6">
 <div class="card">
 <div class="card-body">
-<form action="AttractionServlet" method="post">
+<form action="AttractionCreationServlet" method="post">
 <h2><b>Add new attraction</b></h2>
 
 <fieldset class="form-group">
