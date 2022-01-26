@@ -43,11 +43,11 @@ public class AttractionCreationServlet extends HttpServlet {
 		
 		PrintWriter out = response.getWriter();
 		
-		int id = Integer.parseInt(request.getParameter("attraction_Id"));
+		String id = request.getParameter("attraction_Id");
 		String name = request.getParameter("attractionName");
 		String description = request.getParameter("description");
 		String image = request.getParameter("image");
-		int price = Integer.parseInt(request.getParameter("price"));
+		String price = request.getParameter("price");
 		String hours = request.getParameter("openingHours");
 		String address = request.getParameter("address");
 	
@@ -58,11 +58,11 @@ public class AttractionCreationServlet extends HttpServlet {
 
 		 PreparedStatement ps = con.prepareStatement("insert into attraction values(?,?,?,?,?,?,?)");
 
-		 ps.setInt(1, id);
+		 ps.setString(1, id);
 		 ps.setString(2, name);
 		 ps.setString(3, description);
 		 ps.setString(4, image);
-		 ps.setInt(5, price);
+		 ps.setString(5, price);
 		 ps.setString(6, hours);
 		 ps.setString(7, address);
 	
