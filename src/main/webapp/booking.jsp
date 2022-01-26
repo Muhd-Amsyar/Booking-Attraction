@@ -14,7 +14,7 @@
 		Date: <input type="date" name="date"> 
 		Number of Tickets: <input type="text" name="numberoftickets">
 		Total Cost: <input type="text" name="totalprice"> 
-		<input type="submit" value="Call Servlet" />
+		<input type="submit" value="Book Now" />
 	</form>
 </body>
 </html>
