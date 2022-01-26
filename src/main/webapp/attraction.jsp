@@ -15,6 +15,11 @@ crossorigin="anonymous">
 <div class="card-body">
 <form action="AttractionServlet" method="post">
 <h2><b>Add new attraction</b></h2>
+
+<fieldset class="form-group">
+<label>Attraction Name</label> <input type="text" class="form-control" name="attraction_Id">
+</fieldset>
+
 <fieldset class="form-group">
 <label>Attraction Name</label> <input type="text" class="form-control" name="attractionName">
 </fieldset>
