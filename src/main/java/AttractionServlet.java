@@ -1,5 +1,7 @@
 import java.sql.Connection;
 
+
+
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -31,7 +33,7 @@ public class AttractionServlet extends HttpServlet {
 			  private static final String SELECT_ATTRACTION_BY_ID = "select attraction_Id,attractionName,description,image,price,openingHours,address from attraction where attraction_Id =?";
 			  private static final String SELECT_All_ATTRACTIONS = "select * from attraction ";
 			  private static final String DELETE_ATTRACTION_SQL = "delete from attraction where attraction_Id = ?;";
-			  private static final String UPDATE_ATTRACTION_SQL = "update UserDetails set attraction_Id=?,attractionName=?,description=?,image=?,price=?,openingHours=?,address=? where attraction_Id = ?;";
+			  private static final String UPDATE_ATTRACTION_SQL = "update attraction set attraction_Id=?,attractionName=?,description=?,image=?,price=?,openingHours=?,address=? where attraction_Id=?;";
 			  
 			  protected Connection getConnection() {
 				  Connection connection = null;
@@ -61,18 +63,19 @@ public class AttractionServlet extends HttpServlet {
 		
 		String action = request.getServletPath();
 		 try {
-		 switch (action) {
-		 case "/insert":
-		 break;
-		 case "/delete":
-		 break;
-		 case "/edit":
-		 break;
-		 case "/update":
-		 break;
-		 default:
-		 listAttractions(request, response);
-		 break;
+			 switch (action) {
+			 case "/AttractionServlet/delete":
+			 deleteAttraction(request, response);
+			 break;
+			 case "/AttractionServlet/edit":
+			 showUpdateForm(request, response);
+			 break;
+			 case "/AttractionServlet/update":
+			 updateAttraction(request, response);
+			 break;
+			 case "/AttractionServlet/dashboard":
+			 listAttractions(request, response);
+			 break;
 		 }
 		 } catch (SQLException ex) {
 		 throw new ServletException(ex);
@@ -102,11 +105,11 @@ public class AttractionServlet extends HttpServlet {
 			  ResultSet rs = preparedStatement.executeQuery();
 			
 			  while (rs.next()) {
-			  int attraction_Id = rs.getInt("attraction_Id");
+			  String attraction_Id = rs.getString("attraction_Id");
 			  String attractionName = rs.getString("attractionName");
 			  String description = rs.getString("description");
 			  String image = rs.getString("image");
-			  int price = rs.getInt("price");
+			  String price = rs.getString("price");
 			  String openingHours = rs.getString("openingHours");
 			  String address = rs.getString("address");
 			  attractions.add(new Attraction(attraction_Id,attractionName,description,image,price,openingHours,address));
@@ -116,6 +119,82 @@ public class AttractionServlet extends HttpServlet {
 			  }
 			 request.setAttribute("listAttractions", attractions);
 			 request.getRequestDispatcher("/attractionManagement.jsp").forward(request, response);
+			 }
+	 
+	 private void showUpdateForm(HttpServletRequest request, HttpServletResponse response)
+			 throws SQLException, ServletException, IOException {
+
+			 String attraction_Id = request.getParameter("attraction_Id");
+			 Attraction existingAttraction = new Attraction("","", "", "","", "", "");
+			 // Step 1: Establishing a Connection
+			 try (Connection connection = getConnection();
+			 // Step 2:Create a statement using connection object
+			 PreparedStatement preparedStatement =
+			 connection.prepareStatement(SELECT_ATTRACTION_BY_ID);) {
+			 preparedStatement.setString(1, attraction_Id);
+			 // Step 3: Execute the query or update query
+			 ResultSet rs = preparedStatement.executeQuery();
+			 // Step 4: Process the ResultSet object
+			 while (rs.next()) {
+			 attraction_Id = rs.getString("attraction_Id");
+			 String attractionName = rs.getString("attractionName");
+			 String description = rs.getString("description");
+			 String image = rs.getString("image");
+			 String price = rs.getString("price");
+			 String openingHours = rs.getString("openingHours");
+			 String address = rs.getString("address");
+			 existingAttraction = new Attraction(attraction_Id,attractionName,description,image,price,openingHours,address);
+			 }
+			 } catch (SQLException e) {
+			 System.out.println(e.getMessage());
+			 }
+			 //Step 5: Set existingAttraction to request and serve up the userEdit form
+			 request.setAttribute("attraction", existingAttraction);
+			 request.getRequestDispatcher("/attractionEdit.jsp").forward(request, response);
+			 }
+	 
+	//method to update the user table base on the form data
+	 private void updateAttraction(HttpServletRequest request, HttpServletResponse response)
+	 throws SQLException, IOException {
+	 //Step 1: Retrieve value from the request
+	 String oriAttraction_Id = request.getParameter("oriAttraction_Id");
+	 String attraction_Id = request.getParameter("attraction_Id");
+	  String attractionName = request.getParameter("attractionName");
+	  String description = request.getParameter("description");
+	  String image = request.getParameter("image");
+	  String price = request.getParameter("price");
+	  String openingHours = request.getParameter("openingHours");
+	  String address = request.getParameter("address");
+
+	  //Step 2: Attempt connection with database and execute update user SQL query
+	  try (Connection connection = getConnection(); PreparedStatement statement =
+	 connection.prepareStatement(UPDATE_ATTRACTION_SQL);) {
+	  statement.setString(1, attraction_Id);
+	  statement.setString(2, attractionName);
+	  statement.setString(3, description);
+	  statement.setString(4, image);
+	  statement.setString(5, price);
+	  statement.setString(6, openingHours);
+	  statement.setString(7, address);
+	  statement.setString(8, oriAttraction_Id);
+	  int i = statement.executeUpdate();
+	  
+	  }
+	  response.sendRedirect("http://localhost:8090/BookingAttraction/AttractionServlet/dashboard");
+	 }
+	 
+	 private void deleteAttraction(HttpServletRequest request, HttpServletResponse response)
+			 throws SQLException, IOException {
+			 
+			  String attraction_Id = request.getParameter("attraction_Id");
+			
+			  try (Connection connection = getConnection(); PreparedStatement statement =
+			 connection.prepareStatement( DELETE_ATTRACTION_SQL);) {
+			  statement.setString(1, attraction_Id);
+			  int i = statement.executeUpdate();
+			  }
+		
+			  response.sendRedirect("http://localhost:8090/BookingAttraction/AttractionServlet/dashboard");
 			 }
 
 }

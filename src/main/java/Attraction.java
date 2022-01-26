@@ -1,15 +1,15 @@
 
 public class Attraction {
 	
-	 protected int attraction_Id;
+	 protected String attraction_Id;
 	 protected String attractionName;
 	 protected String description;
 	 protected String image;
-	 protected int price;
+	 protected String price;
 	 protected String openingHours;
 	 protected String address;
 	 
-	public Attraction(int attraction_Id, String attractionName, String description, String image, int price,
+	public Attraction(String attraction_Id, String attractionName, String description, String image, String price,
 			String openingHours, String address) {
 		super();
 		this.attraction_Id = attraction_Id;
@@ -20,10 +20,10 @@ public class Attraction {
 		this.openingHours = openingHours;
 		this.address = address;
 	}
-	public int getAttraction_Id() {
+	public String getAttraction_Id() {
 		return attraction_Id;
 	}
-	public void setAttraction_Id(int attraction_Id) {
+	public void setAttraction_Id(String attraction_Id) {
 		this.attraction_Id = attraction_Id;
 	}
 	public String getAttractionName() {
@@ -44,10 +44,10 @@ public class Attraction {
 	public void setImage(String image) {
 		this.image = image;
 	}
-	public int getPrice() {
+	public String getPrice() {
 		return price;
 	}
-	public void setPrice(int price) {
+	public void setPrice(String price) {
 		this.price = price;
 	}
 	public String getOpeningHours() {

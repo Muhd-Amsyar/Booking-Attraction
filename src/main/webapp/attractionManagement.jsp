@@ -19,7 +19,7 @@ crossorigin="anonymous">
 <hr>
 <div class="container text-left">
 <!-- Add new user button redirects to the register.jsp page -->
-<a href="<%=request.getContextPath()%>/attraction.jsp" class="btn btn-success">Add New User</a>
+<a href="<%=request.getContextPath()%>/attraction.jsp" class="btn btn-success">Add New Attraction</a>
 </div>
 <br>
 <!-- Create a table to list out all current users information -->
@@ -33,6 +33,7 @@ crossorigin="anonymous">
 <th>price</th>
 <th>opening hours</th>
 <th>address</th>
+<th></th>
 </tr>
 </thead>
 
@@ -51,7 +52,7 @@ information accordingly -->
 <c:out value="${attraction.description}" />
 </td>
 <td>
-<c:out value="${attraction.image}" />
+<img width="300" height="200" src="${attraction.image}">
 </td>
 <td>
 <c:out value="${attraction.price}" />
@@ -68,7 +69,7 @@ buttons which invokes the edit/delete functions -->
 <a href="edit?attraction_Id=<c:out value='${attraction.attraction_Id}'
 />">Edit</a> &nbsp;&nbsp;&nbsp;&nbsp;
 <a href="delete?attraction_Id=<c:out
-value='${attraction_Id}' />">Delete</a>
+value='${attraction.attraction_Id}' />">Delete</a>
 </td>
 </tr>
 </c:forEach>
