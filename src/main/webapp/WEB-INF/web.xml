@@ -25,4 +25,20 @@ version="3.1">
  <url-pattern>/AttractionServlet/update</url-pattern>
  <url-pattern>/AttractionServlet/delete</url-pattern>
  </servlet-mapping>
+ 
+   <servlet>
+ <servlet-name>GetBookingServlet</servlet-name>
+ <servlet-class>GetBookingServlet</servlet-class>
+ </servlet>
+
+ <servlet-mapping>
+ <servlet-name>GetBookingServlet</servlet-name>
+<url-pattern>/GetBookingServlet/dashboard</url-pattern>
+ <url-pattern>/GetBookingServlet/edit</url-pattern>
+ <url-pattern>/GetBookingServlet/update</url-pattern>
+ <url-pattern>/GetBookingServlet/delete</url-pattern>
+ </servlet-mapping>
+ 
+ 
+ 
 </web-app>
