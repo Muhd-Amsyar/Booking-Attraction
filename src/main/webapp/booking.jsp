@@ -8,6 +8,7 @@
 </head>
 <body>
 	<form action="BookingServlet" method="post">
+		Booking Id: <input type="text" name="bookingid">
 		Attraction Id: <input type="text" name="attractionid">
 		Attraction Name: <input type="text" name="attractionname">
 		user: <input type="text" name="userid">
