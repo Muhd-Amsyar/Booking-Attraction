@@ -20,6 +20,7 @@ version="3.1">
  <url-pattern>/UserServlet/edit</url-pattern>
  <url-pattern>/UserServlet/update</url-pattern>
  <url-pattern>/UserServlet/delete</url-pattern>
+ </servlet-mapping>
 
   <servlet>
  <servlet-name>AttractionServlet</servlet-name>
