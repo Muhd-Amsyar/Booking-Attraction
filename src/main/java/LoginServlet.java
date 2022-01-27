@@ -49,13 +49,13 @@ public class LoginServlet extends HttpServlet {
         
         if(Validate.checkUser(email, password))
         {
-    		out.println("<h1>" + "You have successfully logged in to an account!" +
-    		"</h1>");
+        	response.sendRedirect("http://localhost:8090/BookingAttraction/UserServlet/dashboard");
+        	
         }
         else
         {
-    		out.println("<h1>" + "Username or Password incorrect" +
-    		"</h1>");
+        	out.println("alert('Username or Password incorrect');");
+    		response.sendRedirect("http://localhost:8090/BookingAttraction/login.jsp");
         }
 		// TODO Auto-generated method stub
 		doGet(request, response);
