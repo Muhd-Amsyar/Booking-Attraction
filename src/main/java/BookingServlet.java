@@ -62,7 +62,7 @@ public class BookingServlet extends HttpServlet {
 		PreparedStatement ps = con.prepareStatement("insert into booking values(?,?,?,?,?,?,?)");
 		
 		//Step 5: parse in the data retrieved from the web form request into the prepared statement accordingly
-		 ps.setString(1, bookingid);
+		ps.setString(1, bookingid);
 		ps.setString(2, attractionid);
 		ps.setString(3, attractionname);
 		ps.setString(4, userid);
