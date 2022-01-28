@@ -13,6 +13,15 @@ version="3.1">
     <welcome-file>default.jsp</welcome-file>
   </welcome-file-list>
   
+
+  <servlet-mapping>
+ <servlet-name>UserServlet</servlet-name>
+<url-pattern>/UserServlet/dashboard</url-pattern>
+ <url-pattern>/UserServlet/edit</url-pattern>
+ <url-pattern>/UserServlet/update</url-pattern>
+ <url-pattern>/UserServlet/delete</url-pattern>
+ </servlet-mapping>
+
   <servlet>
  <servlet-name>AttractionServlet</servlet-name>
  <servlet-class>AttractionServlet</servlet-class>
