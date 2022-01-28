@@ -44,6 +44,7 @@ public class BookingServlet extends HttpServlet {
 		PrintWriter out = response.getWriter();
 		
 		//Step 2: retrieve the four parameters from the request from the web form
+		String bookingid = request.getParameter("bookingid");
 		String attractionid = request.getParameter("attractionid");
 		String attractionname = request.getParameter("attractionname");
 		String userid = request.getParameter("userid");
@@ -58,15 +59,16 @@ public class BookingServlet extends HttpServlet {
 			 "jdbc:mysql://localhost:3306/bookingproject", "root", "");
 		
 		//Step 4: implement the sql query using prepared statement 
-		PreparedStatement ps = con.prepareStatement("insert into booking values(?,?,?,?,?,?)");
+		PreparedStatement ps = con.prepareStatement("insert into booking values(?,?,?,?,?,?,?)");
 		
 		//Step 5: parse in the data retrieved from the web form request into the prepared statement accordingly
-		 ps.setString(1, attractionid);
-		 ps.setString(2, attractionname);
-		 ps.setString(3, userid);
-		 ps.setString(4, date);
-		 ps.setString(5, numberoftickets);
-		 ps.setString(6, totalprice);
+		 ps.setString(1, bookingid);
+		 ps.setString(2, attractionid);
+		 ps.setString(3, attractionname);
+		 ps.setString(4, userid);
+		 ps.setString(5, date);
+		 ps.setString(6, numberoftickets);
+		 ps.setString(7, totalprice);
 		//Step 6: perform the query on the database using the prepared statement
 		 int i = ps.executeUpdate();
 

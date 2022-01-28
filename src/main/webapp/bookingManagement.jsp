@@ -19,7 +19,7 @@ crossorigin="anonymous">
 			<div class="container text-left">
 				<!-- Add new user button redirects to the register.jsp page -->
 				<a href="<%=request.getContextPath()%>/booking.jsp"
-					class="btn btn-success">Add New User</a>
+					class="btn btn-success">Add New Booking</a>
 			</div>
 			<br>
 			<!-- Create a table to list out all current users information -->
@@ -49,9 +49,9 @@ crossorigin="anonymous">
 							<td><c:out value="${booking.numberoftickets}" /></td>
 							<td><c:out value="${booking.totalprice}" /></td>
 							<!-- For each user in the database, Edit/Delete buttons which invokes the edit/delete functions -->
-							<td><a href="edit?name=<c:out value='${booking.bookingid}' />">Edit</a>
+							<td><a href="edit?bookingid=<c:out value='${booking.bookingid}' />">Edit</a>
 								&nbsp;&nbsp;&nbsp;&nbsp; 
-								<a href="delete?name=<c:out value='${booking.bookingid}' />">Delete</a></td>
+								<a href="delete?bookingid=<c:out value='${booking.bookingid}' />">Delete</a></td>
 						</tr>
 					</c:forEach>
 				</tbody>
