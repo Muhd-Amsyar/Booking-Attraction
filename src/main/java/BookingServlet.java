@@ -62,6 +62,7 @@ public class BookingServlet extends HttpServlet {
 		PreparedStatement ps = con.prepareStatement("insert into booking values(?,?,?,?,?,?,?)");
 		
 		//Step 5: parse in the data retrieved from the web form request into the prepared statement accordingly
+
 		ps.setString(1, bookingid); 
 		ps.setString(2, attractionid);
 		ps.setString(3, attractionname);
@@ -73,7 +74,7 @@ public class BookingServlet extends HttpServlet {
 		 int i = ps.executeUpdate();
 
 		 
-		//Step 7: check if the query had been successfully execute, return “You are successfully registered” via the response,
+		//Step 7: check if the query had been successfully execute, return â€œYou are successfully registeredâ€ via the response,
 		  if (i > 0){
 			  PrintWriter writer = response.getWriter();
 			  writer.println("<h1>" + "You have successfully booked attraction's tickets" + "</h1>");

@@ -41,7 +41,7 @@ public class GetBookingServlet extends HttpServlet {
 	private static final String SELECT_BOOKING_BY_ID = "select bookingid, attractionid, attractionname, userid, date, numberoftickets, totalprice from booking where bookingid =?";
 	private static final String SELECT_ALL_BOOKINGS = "select * from booking ";
 	private static final String DELETE_BOOKINGS_SQL = "delete from booking where bookingid = ?;";
-	private static final String UPDATE_BOOKINGS_SQL = "update booking set bookingid = ?,attractionid= ?, attractionname =?, userid =?, date =?, numberoftickets =?, totalprice =?, where bookingid = ?;";
+	private static final String UPDATE_BOOKINGS_SQL = "update booking set bookingid = ?,attractionid= ?, attractionname =?, userid =?, date =?, numberoftickets =?, totalprice =? where bookingid =?;";
 
 	// Step 3: Implement the getConnection method which facilitates connection to
 	// the database via JDBC
@@ -113,18 +113,16 @@ public class GetBookingServlet extends HttpServlet {
 				String totalprice = rs.getString("totalprice");
 				bookings.add(new Booking(bookingid, attractionid, attractionname, userid, date, numberoftickets,
 						totalprice));
-
 			}
 		} catch (SQLException e) {
 			System.out.println(e.getMessage());
 		}
-		// Step 5.4: Set the users list into the listUsers attribute to be pass to the
-		// userManagement.jsp
+		// Step 5.4: Set the users list into the listUsers attribute to be pass to the bookingManagement.jsp
 		request.setAttribute("listBookings", bookings);
 		request.getRequestDispatcher("/bookingManagement.jsp").forward(request, response);
 	}
 
-	// method to get parameter, query database for existing user data and redirect to user edit page
+	// method to get parameter, query database for existing user data and redirect to booking edit page
 	private void showEditForm(HttpServletRequest request, HttpServletResponse response)
 			throws SQLException, ServletException, IOException {
 		// get parameter passed in the URL
@@ -181,9 +179,9 @@ public class GetBookingServlet extends HttpServlet {
 			statement.setString(7, totalprice);
 			statement.setString(8, oribookingid);
 			int i = statement.executeUpdate();
+			System.out.println(bookingid);
 		}
-		// Step 3: redirect back to UserServlet (note: remember to change the url to
-		// your project name)
+		// Step 3: redirect back to UserServlet (note: remember to change the url to your project name)
 		response.sendRedirect("http://localhost:8090/BookingAttraction/GetBookingServlet/dashboard");
 	}
 
@@ -191,6 +189,7 @@ public class GetBookingServlet extends HttpServlet {
 	private void deleteBooking(HttpServletRequest request, HttpServletResponse response) throws SQLException, IOException {
 		// Step 1: Retrieve value from the request
 		String bookingid = request.getParameter("bookingid");
+		System.out.println(bookingid);
 		// Step 2: Attempt connection with database and execute delete user SQL query
 		try (Connection connection = getConnection();
 				PreparedStatement statement = connection.prepareStatement(DELETE_BOOKINGS_SQL);) {
