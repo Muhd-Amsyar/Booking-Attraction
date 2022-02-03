@@ -26,7 +26,7 @@ public class GetBookingServlet extends HttpServlet {
 
 	private String jdbcURL = "jdbc:mysql://localhost:3306/bookingproject";
 	private String jdbcUsername = "root";
-	private String jdbcPassword = "";
+	private String jdbcPassword = "password";
 
 	public GetBookingServlet() {
 		super();
