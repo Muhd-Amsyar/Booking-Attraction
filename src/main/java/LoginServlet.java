@@ -49,8 +49,8 @@ public class LoginServlet extends HttpServlet {
         
         if(Validate.checkUser(email, password))
         {
+//        	response.sendRedirect("http://localhost:8090/BookingAttraction/AttractionServlet/dashboard");
         	response.sendRedirect("http://localhost:8090/BookingAttraction/UserServlet/dashboard");
-        	
         }
         else
         {
