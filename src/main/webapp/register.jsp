@@ -66,6 +66,7 @@ body{
 										</div>
 										<div class="text-center mt-3">
 											<button type ="submit" class="btn btn-lg btn-primary"  value="Call Servlet">Sign up</button>
+										<a class="nav-item nav-link active" href="http://localhost:8090/BookingAttraction/login.jsp">Login here! <span class="sr-only">(current)</span></a>
 											
 										</div>
 									</form>
