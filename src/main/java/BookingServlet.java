@@ -56,7 +56,7 @@ public class BookingServlet extends HttpServlet {
 		try {
 			 Class.forName("com.mysql.jdbc.Driver");
 			 Connection con = DriverManager.getConnection(
-			 "jdbc:mysql://localhost:3306/bookingproject", "root", "");
+			 "jdbc:mysql://localhost:3306/bookingproject", "root", "password");
 		
 		//Step 4: implement the sql query using prepared statement 
 		PreparedStatement ps = con.prepareStatement("insert into booking values(?,?,?,?,?,?,?)");
