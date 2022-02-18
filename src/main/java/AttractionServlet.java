@@ -153,7 +153,7 @@ public class AttractionServlet extends HttpServlet {
 			 request.getRequestDispatcher("/attractionEdit.jsp").forward(request, response);
 			 }
 	 
-	//method to update the user table base on the form data
+	//method to update the attraction table base on the form data
 	 private void updateAttraction(HttpServletRequest request, HttpServletResponse response)
 	 throws SQLException, IOException {
 	 //Step 1: Retrieve value from the request
@@ -166,7 +166,7 @@ public class AttractionServlet extends HttpServlet {
 	  String openingHours = request.getParameter("openingHours");
 	  String address = request.getParameter("address");
 
-	  //Step 2: Attempt connection with database and execute update user SQL query
+	  //Step 2: Attempt connection with database and execute update attraction SQL query
 	  try (Connection connection = getConnection(); PreparedStatement statement =
 	 connection.prepareStatement(UPDATE_ATTRACTION_SQL);) {
 	  statement.setString(1, attraction_Id);
