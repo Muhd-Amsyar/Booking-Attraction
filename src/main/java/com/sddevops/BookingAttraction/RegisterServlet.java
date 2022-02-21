@@ -1,3 +1,5 @@
+package com.sddevops.BookingAttraction;
+
 
 
 import java.io.IOException;
@@ -63,7 +65,7 @@ public class RegisterServlet extends HttpServlet {
 		//Step 6: perform the query on the database using the prepared statement
 		 int i = ps.executeUpdate();
 		 response.sendRedirect("http://localhost:8090/BookingAttraction/login.jsp");
-		//Step 7: check if the query had been successfully execute, return You are successfully registered via the response,
+		//Step 7: check if the query had been successfully execute, return �You are successfully registered� via the response,
 //		 if (i > 0){
 //		PrintWriter writer = response.getWriter();
 //		writer.println("<h1>" + "You have successfully registered an account!" +
@@ -82,3 +84,4 @@ public class RegisterServlet extends HttpServlet {
 	}
 
 }
+
