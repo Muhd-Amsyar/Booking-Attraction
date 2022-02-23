@@ -1,70 +1,36 @@
-/**
- * 
- */
 package com.sddevops.BookingAttraction;
 
-import static org.junit.jupiter.api.Assertions.*;
+import org.testng.annotations.Test;
+import org.testng.annotations.BeforeTest;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 import java.util.List;
 
-import org.junit.jupiter.api.AfterEach;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
 
-
-/**
- * @author lameu
- *
- */
-class AttractionCollectionJunitTest {
-	
+public class AttractionTest {
 
 	private AttractionCollection ac;
 	private Attraction a1;
 	private Attraction a2;
 	private final int ATTRACTION_COLLECTION_SIZE = 2;
-
-	/**
-	 * @throws java.lang.Exception
-	 */
-	@BeforeEach
-	void setUp() throws Exception {
-		
+	
+  @BeforeTest
+  public void beforeTest() {
+	  
 		//Arrange
-				ac = new AttractionCollection();
-				a1 = new Attraction("0001","Universal Studios Singapore","This is a theme park","asdasdasda.png","55","11:00-19:00 open daily","sentosa 123456");
-				a2 = new Attraction("0002","Singapore Zoo","This is a zoo","asdasdqweqwe.png","55","11:00-21:00 open daily","mandai 123456");
-				ac.addAttraction(a1);
-				ac.addAttraction(a2);
-				
-	}
-
-	/**
-	 * @throws java.lang.Exception
-	 */
-	@AfterEach
-	void tearDown() throws Exception {
-	}
-
-	/**
-	 * Test method for {@link com.sddevops.BookingAttraction.AttractionCollection#AttractionCollection()}.
-	 */
+		ac = new AttractionCollection();
+		a1 = new Attraction("0001","Universal Studios Singapore","This is a theme park","asdasdasda.png","55","11:00-19:00 open daily","sentosa 123456");
+		a2 = new Attraction("0002","Singapore Zoo","This is a zoo","asdasdqweqwe.png","55","11:00-21:00 open daily","mandai 123456");
+		ac.addAttraction(a1);
+		ac.addAttraction(a2);
+  }
+  
 	@Test
 	void testAttractionCollection() {
 		//test if attraction collection is null, test should be success if ac exist
 		assertNotNull(ac);
-	}
-
-	/**
-	 * Test method for {@link com.sddevops.BookingAttraction.AttractionCollection#AttractionCollection(int)}.
-	 */
-    @Test
-	void testAttractionCollectionInt() {
-    	// test collection size 
-		List<Attraction> testAc = ac.getAttractions();
-		
-		assertEquals(testAc.size(), ATTRACTION_COLLECTION_SIZE);	
-		
 	}
 
 	/**
@@ -118,6 +84,5 @@ class AttractionCollectionJunitTest {
 	@Test 
 	void testUpdateAttraction() {
 	}
-	
 
 }
