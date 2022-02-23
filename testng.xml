@@ -6,6 +6,8 @@
  
   <!--   <class name="com.sddevops.BookingAttraction.UserCollectionTest"/>
       <class name="com.sddevops.BookingAttraction.NewTest"/>-->
+      
+  <!--  <class name="com.sddevops.BookingAttraction.AttractionCollectionJunitTest"/> />-->
     </classes>
   </test> <!-- Test -->
 </suite> <!-- Suite -->
