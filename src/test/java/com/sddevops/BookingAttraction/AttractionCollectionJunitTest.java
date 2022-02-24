@@ -56,32 +56,12 @@ class AttractionCollectionJunitTest {
 	}
 
 	/**
-	 * Test method for {@link com.sddevops.BookingAttraction.AttractionCollection#AttractionCollection(int)}.
-	 */
-    @Test
-	void testAttractionCollectionInt() {
-    	// test collection size 
-		List<Attraction> testAc = ac.getAttractions();
-		
-		assertEquals(testAc.size(), ATTRACTION_COLLECTION_SIZE);	
-		
-	}
-
-	/**
 	 * Test method for {@link com.sddevops.BookingAttraction.AttractionCollection#getAttractions()}.
 	 */
 	@Test
 	void testGetAttractions() {
 		
 	assertEquals(2,ac.getAttractions().size());
-	
-	}
-	
-	@Test
-	void testGetOneAttraction() {
-		
-		//since index 0 is a1, if test is successful means it is able to get one attraction
-	assertEquals(ac.getAttractions().get(0), a1);
 	
 	}
 	
@@ -107,17 +87,10 @@ class AttractionCollectionJunitTest {
 	
 		List<Attraction> testAc = ac.getAttractions();
 		
-		assertEquals(testAc.size(), ATTRACTION_COLLECTION_SIZE);
-		
-		ac.deleteAttraction(a1);
-		
-		assertEquals(ac.getAttractions().size(), ATTRACTION_COLLECTION_SIZE-1);
+		   ac.deleteAttraction(a1);
+		   
+		   assertEquals(ATTRACTION_COLLECTION_SIZE-1,ac.getAttractions().size(), ATTRACTION_COLLECTION_SIZE);
 			
 	}
 	
-	@Test 
-	void testUpdateAttraction() {
-	}
-	
-
 }

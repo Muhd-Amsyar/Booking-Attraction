@@ -5,6 +5,7 @@ import org.testng.annotations.BeforeTest;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.testng.Assert.assertNotEquals;
 
 import java.util.List;
 
@@ -36,18 +37,10 @@ public class AttractionTest {
 	/**
 	 * Test method for {@link com.sddevops.BookingAttraction.AttractionCollection#getAttractions()}.
 	 */
-	//@Test
-	//void testGetAttractions() {
-		
-	//assertEquals(2,ac.getAttractions().size());
-	
-	//}
-	
 	@Test
-	void testGetOneAttraction() {
+	void testGetAttractions() {
 		
-		//since index 0 is a1, if test is successful means it is able to get one attraction
-	assertEquals(ac.getAttractions().get(0), a1);
+	assertEquals(2,ac.getAttractions().size());
 	
 	}
 	
@@ -68,21 +61,17 @@ public class AttractionTest {
 		
 	}
 	
-	//@Test
-	//void testDeleteAttraction() {
+	@Test
+	void testDeleteAttraction() {
 	
-		//List<Attraction> testAc = ac.getAttractions();
+		List<Attraction> testAc = ac.getAttractions();
 		
-		//assertEquals(testAc.size(), ATTRACTION_COLLECTION_SIZE);
+	   ac.deleteAttraction(a1);
+	   
+	   assertEquals(ATTRACTION_COLLECTION_SIZE-1,ac.getAttractions().size(), ATTRACTION_COLLECTION_SIZE);
 		
-		//ac.deleteAttraction(a1);
 		
-		//assertEquals(ac.getAttractions().size(), ATTRACTION_COLLECTION_SIZE-1);
-			
-	//}
-	
-	@Test 
-	void testUpdateAttraction() {
+		
 	}
 
 }
