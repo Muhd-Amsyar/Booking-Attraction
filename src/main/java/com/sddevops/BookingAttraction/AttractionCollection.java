@@ -35,9 +35,6 @@ public class AttractionCollection {
     		attractions.remove(attraction);
     	}
     }
-    
-    public void updateAttraction(Attraction attraction) {
-    	
-    }
+
 
 }
